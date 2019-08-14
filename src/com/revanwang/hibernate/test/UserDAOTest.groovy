@@ -20,10 +20,15 @@ class UserDAOTest {
 
     @Test
     void testUpdate() {
+        User user = userDAO.get(1L);
+        user.name = "WRW";
+        userDAO.update(user);
     }
 
     @Test
     void testDelete() {
+        User user = userDAO.get(1L);
+        userDAO.delete(user);
     }
 
     @Test

@@ -37,12 +37,31 @@ public class UserDAOImpl implements IUserDAO {
 
     @Override
     public void update(User user) {
+        Configuration cfg = new Configuration();
+        cfg.configure("/hibernate.cfg.xml");
+        SessionFactory sf = cfg.buildSessionFactory();
+        Session session = sf.openSession();
+        Transaction ts = session.getTransaction();
+        ts.begin();
+        session.update(user);
+        ts.commit();
+        session.close();
+        sf.close();
 
     }
 
     @Override
     public void delete(User user) {
-
+        Configuration cfg = new Configuration();
+        cfg.configure("/hibernate.cfg.xml");
+        SessionFactory sf = cfg.buildSessionFactory();
+        Session session = sf.openSession();
+        Transaction ts = session.getTransaction();
+        ts.begin();
+        session.delete(user);
+        ts.commit();
+        session.close();
+        sf.close();
     }
 
     @Override
